@@ -41,25 +41,6 @@ const getListStyle = isDraggingOver => ({
 });
 
 const queryAttr = "data-rbd-drag-handle-draggable-id";
-const CustomPlaceholder = ({ snapshot }) => {
-	const draggedDOM = React.useMemo(() => {
-		const domQuery = `[${queryAttr}='${snapshot.draggingOverWith}']`;
-		return document.querySelector(domQuery);
-	}, [snapshot.draggingOverWith]);
-
-	React.useEffect(() => {
-		if (!!draggedDOM) {
-			const parent = draggedDOM.parentNode;
-			// The equivalent of parent.children.indexOf(child)
-			var index = Array.prototype.indexOf.call(parent.children, draggedDOM);
-			console.log("TCL: CustomPlaceholder -> index", index);
-		}
-	}, [draggedDOM]);
-
-	console.log("TCL: CustomPlaceholder -> draggedDOM", draggedDOM);
-
-	return <div>current: {snapshot && snapshot.draggingOverWith}</div>;
-};
 
 const App = props => {
 	const [placeholderProps, setPlaceholderProps] = useState({});
